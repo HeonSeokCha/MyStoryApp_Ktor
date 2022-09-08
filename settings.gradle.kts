@@ -1,0 +1,1 @@
+rootProject.name = "com.chs.my-story-app"
