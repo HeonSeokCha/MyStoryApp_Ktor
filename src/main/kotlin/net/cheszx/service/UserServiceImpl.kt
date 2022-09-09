@@ -3,6 +3,7 @@ package net.cheszx.service
 import net.cheszx.db.DatabaseFactory.dbQuery
 import net.cheszx.db.UserTable
 import net.cheszx.model.User
+import net.cheszx.security.hash
 import org.jetbrains.exposed.sql.ResultRow
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.select
@@ -14,7 +15,7 @@ class UserServiceImpl : UserService {
         dbQuery {
             statement = UserTable.insert {
                 it[email] = params.email
-                it[password] = params.email
+                it[password] = hash(params.password)
                 it[fullName] = params.fullName
                 it[avatar] = params.avatar
             }
